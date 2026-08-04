@@ -1,51 +1,241 @@
+/* fonts/styles/main.css
+   Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+   Licensed under the DASL-1.0 Licence.
+   See LICENCE.md in the project root for full licence information. */
+
+/* ---------- Comic Code (self-hosted, clean filenames) ---------- */
+
 @font-face {
     font-family: 'Comic Code';
-    src: url('https://fonts.doughmination.co.uk/ComicCode-Regular_2022-05-24-151938_hsmz.woff2') format('woff2'),
-        url('https://fonts.doughmination.co.uk/ComicCode-Regular_2022-05-24-151938_hsmz.woff') format('woff');
+    src: url('/Comic-Code/woff2/ComicCode-Regular.woff2') format('woff2'),
+         url('/Comic-Code/woff/ComicCode-Regular.woff') format('woff');
     font-weight: 400;
+    font-display: swap;
 }
-
 @font-face {
     font-family: 'Comic Code';
-    src: url('https://fonts.doughmination.co.uk/ComicCode-Italic_2022-05-24-151939_rdtu.woff2') format('woff2'),
-        url('https://fonts.doughmination.co.uk/ComicCode-Italic_2022-05-24-151939_rdtu.woff') format('woff');
+    src: url('/Comic-Code/woff2/ComicCode-Italic.woff2') format('woff2'),
+         url('/Comic-Code/woff/ComicCode-Italic.woff') format('woff');
+    font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
-
 @font-face {
     font-family: 'Comic Code';
-    src: url('https://fonts.doughmination.co.uk/ComicCode-Medium_2022-05-24-151941_ugqm.woff2') format('woff2'),
-        url('https://fonts.doughmination.co.uk/ComicCode-Medium_2022-05-24-151941_ugqm.woff') format('woff');
+    src: url('/Comic-Code/woff2/ComicCode-Medium.woff2') format('woff2'),
+         url('/Comic-Code/woff/ComicCode-Medium.woff') format('woff');
     font-weight: 500;
+    font-display: swap;
 }
-
 @font-face {
     font-family: 'Comic Code';
-    src: url('https://fonts.doughmination.co.uk/ComicCode-Bold_2022-05-24-152309_zqkm.woff2') format('woff2'),
-        url('https://fonts.doughmination.co.uk/ComicCode-Bold_2022-05-24-152309_zqkm.woff') format('woff');
+    src: url('/Comic-Code/woff2/ComicCode-Bold.woff2') format('woff2'),
+         url('/Comic-Code/woff/ComicCode-Bold.woff') format('woff');
     font-weight: 700;
+    font-display: swap;
 }
+
+/* ---------- San Francisco specimens (local) ---------- */
+
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('/San-Francisco/SF%20Pro%20Display/SF-Pro-Display-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SF Pro Rounded';
+    src: url('/San-Francisco/SF%20Pro%20Rounded/SF-Pro-Rounded-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url('/San-Francisco/SF%20Pro%20Text/SF-Pro-Text-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SF Mono';
+    src: url('/San-Francisco/SF%20Mono/SF-Mono-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SF Compact Rounded';
+    src: url('/San-Francisco/SF%20Compact%20Rounded/SF-Compact-Rounded-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+
+/* ---------- Base ---------- */
+
+:root {
+    --bg: #15151a;
+    --text: #e6e6e6;
+    --dim: #8a8a92;
+    --faint: #5c5c64;
+    --line: #2a2a30;
+    --accent: #00ffa6;
+    --mono: 'Comic Code', ui-monospace, 'SF Mono', monospace;
+}
+
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
-    background: #0b0b0b;
-    color: #00ffa6;
-    font-family: "Comic Code", monospace;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 22px 96px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Header ---------- */
+
+header { margin-bottom: 40px; }
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+}
+.intro { color: var(--dim); margin: 0; max-width: 60ch; }
+.intro a { color: var(--accent); }
+
+/* ---------- Preview box ---------- */
+
+.preview-bar {
     display: flex;
-    justify-content: center;
+    gap: 10px;
     align-items: center;
-    height: 100vh;
-    text-align: center;
+    margin: 34px 0 10px;
+    flex-wrap: wrap;
+}
+.preview-bar label { color: var(--faint); font-size: 13px; }
+#preview-input {
+    flex: 1;
+    min-width: 220px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 15px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    outline: none;
+}
+#preview-input:focus { border-color: var(--accent); }
+.size-row { display: flex; align-items: center; gap: 8px; color: var(--faint); font-size: 13px; }
+#size { accent-color: var(--accent); width: 120px; }
+
+/* ---------- Font list ---------- */
+
+.fonts {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    border-top: 1px solid var(--line);
+}
+.font {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+}
+.font-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.font-name { font-size: 17px; font-weight: 700; margin: 0; }
+.font-meta { color: var(--faint); font-size: 13px; }
+.specimen {
+    margin: 16px 0 14px;
+    line-height: 1.25;
+    word-break: break-word;
+}
+.files {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 12px;
+}
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--dim);
+}
+.file-row code {
+    color: var(--dim);
+    background: rgba(255,255,255,0.04);
+    padding: 2px 7px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+.copy {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--dim);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.copy:hover { border-color: var(--accent); color: var(--text); }
+.copy.done { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Usage ---------- */
+
+.usage { margin-top: 48px; }
+.usage h2 { font-size: 18px; margin: 0 0 12px; }
+.code-block {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+}
+.code-block pre { margin: 0; font-size: 13px; line-height: 1.7; color: var(--dim); }
+.code-block .copy { position: absolute; top: 12px; right: 12px; }
+
+/* ---------- Footer ---------- */
+
+footer {
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: 13px;
 }
 
-pre {
-    font-size: 14px;
-    line-height: 1.2;
-    color: #63ffd1;
-}
+/* ---------- Tiny copied hint ---------- */
 
-.tagline {
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: 500;
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: var(--bg);
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
 }
+.toast.show { opacity: 1; }
