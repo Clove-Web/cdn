@@ -1,0 +1,16 @@
+# Cloudflare Pages custom headers.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# CORS is handled per-origin in functions/_middleware.ts (allowlist).
+/*
+  X-Content-Type-Options: nosniff
+
+# Assets: cache for a day. URLs can change any time, so nothing longer.
+/f/*
+  Cache-Control: public, max-age=86400
+/glb/*
+  Cache-Control: public, max-age=86400
+/img/*
+  Cache-Control: public, max-age=86400
+/sfx/*
+  Cache-Control: public, max-age=86400

@@ -1,41 +1,28 @@
 <!DOCTYPE html>
-<!-- fonts/index.html
-     Copyright (c) 2026 Clove Nytrix Doughmination Twilight
-     Licensed under the DASL-1.0 Licence.
-     See LICENCE.md in the project root for full licence information. -->
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Doughmination Fonts</title>
-  <link rel="icon" type="image/png" href="https://doughmination.gay/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="The fonts I self-host at fonts.doughmination.co.uk, grouped into collections.">
-  <link rel="stylesheet" href="/styles/main.css">
+  <title>CDN</title>
+  <meta name="description" content="A personal CDN for assets.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
-  <div class="page">
-
-    <header>
-      <h1>Doughmination Fonts</h1>
-      <p class="intro">The fonts I self-host, served from
-        <a href="https://fonts.doughmination.co.uk">fonts.doughmination.co.uk</a>.
-        Pick a collection to preview its fonts and grab file paths or CSS.
-      </p>
-    </header>
-
-    <ul class="collections" id="collections"></ul>
-
-    <footer>
-      doughmination fonts &middot; the files live in this repo, nothing tracks you here.
-    </footer>
-
-  </div>
-
-  <div class="toast" id="toast"></div>
-  <script src="/scripts/main.js"></script>
+  <main>
+    <h1>Hey, this is my CDN.</h1>
+    <p>
+      This holds assets for my other sites. It's meant for me, but you're
+      welcome to look around.
+    </p>
+    <p class="note">
+      Please don't hotlink. I can change these URLs at any point without
+      warning, so anything pointing here may break.
+    </p>
+    <p class="dirs" id="dirs"></p>
+    <footer id="footer"></footer>
+  </main>
+  <script src="/script.js"></script>
 </body>
-
 </html>
