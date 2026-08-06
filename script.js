@@ -5,7 +5,7 @@
 const listing = document.getElementById("listing");
 const crumbs = document.getElementById("crumbs");
 const filter = document.getElementById("filter");
-const footer = document.getElementById("footer");
+const fcount = document.getElementById("fcount");
 
 let FILES = []; // [{ path, size }]
 
@@ -105,17 +105,17 @@ window.addEventListener("hashchange", () => {
 });
 
 async function init() {
-  footer.textContent = "loading…";
+  fcount.textContent = "loading… · ";
   try {
     const res = await fetch("/manifest.json", { cache: "no-cache" });
     const data = await res.json();
     FILES = data.files || [];
     const count = data.count ?? FILES.length;
-    footer.textContent =
-      `${count} files · © ${new Date().getFullYear()} · assets may move without notice`;
+    fcount.textContent =
+      `${count} files · © ${new Date().getFullYear()} · assets may move without notice · `;
     render();
   } catch {
-    footer.textContent = "";
+    fcount.textContent = "";
     listing.innerHTML =
       `<li class="row empty">Couldn't load the file list.</li>`;
   }

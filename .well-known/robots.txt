@@ -17,4 +17,4 @@ User-agent: *
 Content-Signal: search=yes,ai-train=no
 Disallow: /
 Disallow: /cgi-bin/
-Sitemap: https://doughmination.gay/sitemap.xml
+Sitemap: /sitemap.xml

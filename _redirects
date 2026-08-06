@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# well-known/change-password: points password managers at the real change page.
+# NOTE: this only matters on a domain people log in to — the CDN has no login,
+# so this is mostly here as the shared canonical. Set the target, then add the
+# same redirect on your auth domain (doughmination.xyz).
+/.well-known/change-password  https://REPLACE_WITH_PASSWORD_CHANGE_URL  302

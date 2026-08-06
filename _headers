@@ -18,3 +18,13 @@
 # File list for the browser: short cache so it refreshes soon after a deploy.
 /manifest.json
   Cache-Control: public, max-age=300
+
+# Show the licence inline in the browser instead of downloading it.
+/LICENCE.md
+  Content-Type: text/plain; charset=utf-8
+
+# .well-known — set correct content types (some files have no extension).
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+/.well-known/ssh.txt
+  Content-Type: text/plain; charset=utf-8
