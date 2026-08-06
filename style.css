@@ -1,13 +1,50 @@
 :root {
-  --bg: #0f0f12;
-  --fg: #e8e8ea;
-  --muted: #9a9aa2;
-  --accent: #c58cf0;
-  --panel: #1c1c22;
-  --border: #2a2a32;
+  --bg: #0a0b10;
+  --fg: #f4f6fb;
+  --muted: #9aa3c2;
+  --accent: #f5a9b8;
+  --panel: #12141c;
+  --border: #232838;
 }
 
 * { box-sizing: border-box; }
+
+@keyframes trans-title-slide {
+  to { background-position-x: 200%; }
+}
+
+.trans-title {
+  background-image: linear-gradient(90deg, #5BCEFA, #F5A9B8, #ffffff, #F5A9B8, #5BCEFA, #5BCEFA);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  animation: trans-title-slide 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trans-title { animation: none; }
+}
+
+.sfx-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  background: var(--panel);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.sfx-toggle:hover { border-color: var(--accent); }
 
 html, body {
   margin: 0;
