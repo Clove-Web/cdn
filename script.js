@@ -110,8 +110,9 @@ async function init() {
     const res = await fetch("/manifest.json", { cache: "no-cache" });
     const data = await res.json();
     FILES = data.files || [];
+    const count = data.count ?? FILES.length;
     footer.textContent =
-      `${data.count} files · © ${new Date().getFullYear()} · assets may move without notice`;
+      `${count} files · © ${new Date().getFullYear()} · assets may move without notice`;
     render();
   } catch {
     footer.textContent = "";
