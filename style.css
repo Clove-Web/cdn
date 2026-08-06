@@ -142,3 +142,48 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+
+/* Rendered markdown (licence page) */
+.doc {
+  line-height: 1.7;
+}
+
+.doc h1 {
+  font-size: 1.5rem;
+  margin: 1.8rem 0 0.75rem;
+}
+
+.doc h2 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.6rem;
+}
+
+.doc h3 { font-size: 1.05rem; }
+
+.doc hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.6rem 0;
+}
+
+.doc ul,
+.doc ol {
+  padding-left: 1.3rem;
+}
+
+.doc li { margin: 0.3rem 0; }
+
+.doc a { color: var(--accent); }
+
+.doc code {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+
+.doc pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
