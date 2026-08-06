@@ -3,6 +3,8 @@
   --fg: #e8e8ea;
   --muted: #9a9aa2;
   --accent: #c58cf0;
+  --panel: #1c1c22;
+  --border: #2a2a32;
 }
 
 * { box-sizing: border-box; }
@@ -17,13 +19,12 @@ body {
   color: var(--fg);
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 2rem;
 }
 
 main {
-  max-width: 34rem;
+  max-width: 44rem;
   width: 100%;
 }
 
@@ -38,27 +39,103 @@ p { margin: 0 0 1rem; }
   color: var(--muted);
   border-left: 3px solid var(--accent);
   padding-left: 0.9rem;
+  font-size: 0.95rem;
 }
-
-.dirs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.dirs a {
-  color: var(--fg);
-  text-decoration: none;
-  background: #1c1c22;
-  border: 1px solid #2a2a32;
-  border-radius: 6px;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.9rem;
-}
-
-.dirs a:hover { border-color: var(--accent); }
 
 a { color: var(--accent); }
+
+/* Breadcrumbs */
+.crumbs {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+
+.crumbs .sep {
+  color: var(--muted);
+  margin: 0 0.4rem;
+}
+
+/* Filter */
+.filter {
+  width: 100%;
+  background: var(--panel);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.filter:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Listing */
+.listing {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.row:first-child { border-top: none; }
+.row:hover { background: var(--panel); }
+
+.row .name {
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row.folder .name { color: var(--accent); }
+.row .name:hover { text-decoration: underline; }
+
+.row .size {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.row .copy {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.15rem 0.55rem;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.row .copy:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
+.row.empty {
+  color: var(--muted);
+  justify-content: center;
+}
 
 footer {
   margin-top: 2rem;

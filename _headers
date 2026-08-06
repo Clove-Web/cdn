@@ -14,3 +14,7 @@
   Cache-Control: public, max-age=86400
 /sfx/*
   Cache-Control: public, max-age=86400
+
+# File list for the browser: short cache so it refreshes soon after a deploy.
+/manifest.json
+  Cache-Control: public, max-age=300

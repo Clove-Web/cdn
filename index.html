@@ -13,14 +13,17 @@
   <main>
     <h1>Hey, this is my CDN.</h1>
     <p>
-      This holds assets for my other sites. It's meant for me, but you're
-      welcome to look around.
+      Assets for my other sites. Meant for me, but you're welcome to look around.
     </p>
     <p class="note">
       Please don't hotlink. I can change these URLs at any point without
       warning, so anything pointing here may break.
     </p>
-    <p class="dirs" id="dirs"></p>
+
+    <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+    <input class="filter" id="filter" type="search" placeholder="Filter this folder…" autocomplete="off">
+    <ul class="listing" id="listing"></ul>
+
     <footer id="footer"></footer>
   </main>
   <script src="/script.js"></script>
