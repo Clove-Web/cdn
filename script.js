@@ -4,10 +4,21 @@
 
 const listing = document.getElementById("listing");
 const crumbs = document.getElementById("crumbs");
+const folderbar = document.getElementById("folderbar");
 const filter = document.getElementById("filter");
 const fcount = document.getElementById("fcount");
 
 let FILES = []; // [{ path, size }]
+
+// A folder is exportable if it contains an empty "zippable" marker file.
+function isZippable(folderPath) {
+  const marker = (folderPath ? folderPath + "/" : "") + "zippable";
+  return FILES.some((f) => f.path === marker);
+}
+
+function zipHref(folderPath) {
+  return `/zip?path=${encodeURIComponent(folderPath)}`;
+}
 
 function fmtSize(n) {
   if (n < 1024) return `${n} B`;
@@ -59,19 +70,30 @@ function render() {
   const { folders, files } = childrenOf(prefix);
   const q = filter.value.trim().toLowerCase();
 
+  // Download button for the current folder, if it's zippable.
+  folderbar.innerHTML =
+    prefix && isZippable(prefix)
+      ? `<a class="zipbtn" href="${zipHref(prefix)}">⬇ Download this folder (.zip)</a>`
+      : "";
+
   const rows = [];
 
   for (const name of folders) {
     if (q && !name.toLowerCase().includes(q)) continue;
     const target = prefix ? `${prefix}/${name}` : name;
+    const zip = isZippable(target)
+      ? `<a class="zip" href="${zipHref(target)}" title="Download as .zip">.zip</a>`
+      : "";
     rows.push(
       `<li class="row folder">
         <a class="name" href="#/${encodeURI(target)}">📁 ${name}/</a>
+        ${zip}
       </li>`,
     );
   }
 
   for (const f of files) {
+    if (f.name === "zippable") continue; // hide the marker
     if (q && !f.name.toLowerCase().includes(q)) continue;
     const url = `/${encodeURI(f.path)}`;
     rows.push(

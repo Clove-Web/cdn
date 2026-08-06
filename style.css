@@ -76,6 +76,47 @@ a { color: var(--accent); }
   border-color: var(--accent);
 }
 
+/* Folder export bar */
+.folderbar {
+  margin-bottom: 1rem;
+}
+
+.folderbar:empty {
+  margin-bottom: 0;
+}
+
+.zipbtn {
+  display: inline-block;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.zipbtn:hover {
+  background: var(--accent);
+  color: #14121a;
+}
+
+/* Per-row .zip link on zippable folders */
+.row .zip {
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.row .zip:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
 /* Listing */
 .listing {
   list-style: none;
