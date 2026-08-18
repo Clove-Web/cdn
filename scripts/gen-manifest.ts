@@ -20,6 +20,7 @@ const ASSET_DIRS = [
   "glb",
   "img",
   "sfx",
+  "m"
 ];
 
 type Entry = {
