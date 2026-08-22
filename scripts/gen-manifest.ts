@@ -16,10 +16,12 @@ import { join } from "node:path";
 const ROOT = process.cwd();
 
 const ASSET_DIRS = [
+  ".well-known",
   "f",
   "glb",
   "img",
   "sfx",
+  "sdks",
   "m",
   "gif",
   "pk"
