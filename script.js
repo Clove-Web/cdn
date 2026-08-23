@@ -10,6 +10,12 @@ const fcount = document.getElementById("fcount");
 
 let FILES = []; // [{ path, size }]
 
+// Small blocky stroke icons — replacing the old folder/file/download emoji.
+const ICON_STYLE = 'style="vertical-align:-2px;margin-right:0.35em"';
+const ICON_FOLDER = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" ${ICON_STYLE}><path d="M3 6h6l2 3h10v11H3V6z"/></svg>`;
+const ICON_FILE = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" ${ICON_STYLE}><path d="M5 2h10l4 4v16H5V2z"/><path d="M15 2v4h4"/></svg>`;
+const ICON_DOWNLOAD = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" ${ICON_STYLE}><path d="M12 3v13M7 12l5 5 5-5M4 21h16"/></svg>`;
+
 // A folder is exportable if it contains an empty "zippable" marker file.
 function isZippable(folderPath) {
   const marker = (folderPath ? folderPath + "/" : "") + "zippable";
@@ -73,7 +79,7 @@ function render() {
   // Download button for the current folder, if it's zippable.
   folderbar.innerHTML =
     prefix && isZippable(prefix)
-      ? `<a class="zipbtn" href="${zipHref(prefix)}">⬇ Download this folder (.zip)</a>`
+      ? `<a class="zipbtn" href="${zipHref(prefix)}">${ICON_DOWNLOAD}Download this folder (.zip)</a>`
       : "";
 
   const rows = [];
@@ -86,7 +92,7 @@ function render() {
       : "";
     rows.push(
       `<li class="row folder">
-        <a class="name" href="#/${encodeURI(target)}">📁 ${name}/</a>
+        <a class="name" href="#/${encodeURI(target)}">${ICON_FOLDER}${name}/</a>
         ${zip}
       </li>`,
     );
@@ -98,7 +104,7 @@ function render() {
     const url = `/${encodeURI(f.path)}`;
     rows.push(
       `<li class="row file">
-        <a class="name" href="${url}" target="_blank" rel="noopener">📄 ${f.name}</a>
+        <a class="name" href="${url}" target="_blank" rel="noopener">${ICON_FILE}${f.name}</a>
         <span class="size">${fmtSize(f.size)}</span>
         <button class="copy" data-path="${f.path}" title="Copy URL">copy</button>
       </li>`,

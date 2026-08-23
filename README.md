@@ -66,11 +66,13 @@ Cloudflare Pages, deployed automatically on push (no GitHub Action). Node 22 (`.
 
 ## Styling
 
-The CDN uses the **same look as every other Doughmination site** (see the monorepo `AGENTS.md` → "Uniform styling"):
+The CDN uses the **same look as every other Doughmination site** (see the monorepo `AGENTS.md` → "Uniform styling") — the terminal/clunky redesign:
 
-- Dark trans-pink palette tokens (`--accent: #f5a9b8`, `--bg: #0a0b10`, …).
-- The animated trans-flag gradient title (`.trans-title`).
-- **Comic Code** font, loaded via `@font-face` from `fonts.doughmination.co.uk`.
+- Dark trans-pink palette tokens (`--accent: #f5a9b8`, `--bg: #0a0b10`, …), unchanged.
+- **IBM Plex Mono**, loaded from Google Fonts — replaced the old self-hosted Comic Code face.
+- The trans-flag gradient title animation was dropped for a solid `.trans-title` heading with a thin static `.flag-stripe` accent bar above it.
+- Square corners everywhere (`border-radius: 0`) — no more rounded panels/buttons.
+- No emoji in the UI: the folder/file/download glyphs in `script.js` are small inline SVG icons instead of 📁/📄/⬇.
 
 The one deliberate exception: **no UI sounds here.** The `sfx/` files are hosted for the *other* sites to use; the CDN itself stays silent.
 

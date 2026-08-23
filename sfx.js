@@ -90,8 +90,16 @@
     return muted ? "Unmute interface sounds" : "Mute interface sounds";
   }
 
+  // Small blocky stroke icon — replacing the old 🔇/🔊 emoji glyphs.
+  var ICON_ATTRS =
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" style="vertical-align:-2px"';
+
   function glyph() {
-    return muted ? "🔇" : "🔊";
+    var speaker = '<path d="M3 9v6h4l5 4V5L7 9H3z"/>';
+    var waves = muted
+      ? '<path d="M16 9l5 6M21 9l-5 6"/>'
+      : '<path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/>';
+    return "<svg " + ICON_ATTRS + ">" + speaker + waves + "</svg>";
   }
 
   function mount() {
@@ -102,7 +110,7 @@
       document.body.appendChild(button);
     }
     button.type = "button";
-    button.textContent = glyph();
+    button.innerHTML = glyph();
     button.setAttribute("aria-label", label());
 
     button.addEventListener("click", function () {
@@ -110,7 +118,7 @@
       try {
         localStorage.setItem(STORE_KEY, muted ? "1" : "0");
       } catch (e) {}
-      button.textContent = glyph();
+      button.innerHTML = glyph();
       button.setAttribute("aria-label", label());
       if (!muted) play("toggle");
     });
