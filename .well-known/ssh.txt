@@ -1,4 +1,5 @@
 # SSH public keys for Clove / doughmination.
 
 # --- keys below ---
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGgL2Ai9+oH7Q6jP0QcPDmm0V/mjdn1BpKbAd04pE2Sw clovetwilight@Cloves-MacBook-Pro.local
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK1Hw9KtUf2tnKdt75jaFKoODZqOKQfEiQorRhobeyYb admin@doughmination.win
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUGK2OeoybimFe/PmVJEvOln36FG4UR9UFGi0BvHktR aur-ci@doughmination
