@@ -24,7 +24,9 @@ const ASSET_DIRS = [
   "sdks",
   "m",
   "gif",
-  "pk"
+  "pk",
+  "shells",
+  "gh-badges"
 ];
 
 type Entry = {
