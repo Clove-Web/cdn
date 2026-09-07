@@ -35,7 +35,8 @@ cdn/
 ├── _redirects         Cloudflare Pages redirects (.well-known/change-password)
 ├── functions/
 │   ├── _middleware.ts CORS allowlist (echoes an allowed Origin back)
-│   └── zip.ts         GET /zip?path=… streams a folder as a .zip on demand
+│   ├── zip.ts         GET /zip?path=… streams a folder as a .zip on demand
+│   └── genshin/ui/[[path]].ts  GET /genshin/ui/<file>.png → cached enka.network/ui/* proxy
 ├── scripts/
 │   └── gen-manifest.ts Walks the asset dirs and writes manifest.json
 ├── f/                 General files
@@ -53,6 +54,7 @@ The asset directories indexed into the manifest are: `f`, `glb`, `img`, `sfx` (s
 - **manifest.json** is the source of truth for the browser. It's regenerated every deploy — never edit it by hand (it's committed as `{"files":[]}` and filled at build).
 - **Zippable folders:** a folder is downloadable as a `.zip` only if it contains an empty marker file named `zippable`. `functions/zip.ts` streams it one file at a time (Workers runtime memory limits — huge folders are intentionally left non-zippable).
 - **CORS:** `Access-Control-Allow-Origin` can only be one origin, so `functions/_middleware.ts` keeps an allowlist of the Doughmination domains and echoes back the request's `Origin` when it matches.
+- **Genshin UI proxy:** `functions/genshin/ui/[[path]].ts` fetches `enka.network/ui/<file>.png` once, then serves it from Cloudflare's edge cache (30-day immutable). The API hands out icon URLs pointing here so the Discord bot's Genshin character card can pull splash art / weapon / artifact icons without rate-limiting Enka.
 - **Caching (`_headers`):** assets (`/f`, `/glb`, `/img`, `/sfx`) cache for a day; `manifest.json` caches for 5 minutes so the listing refreshes soon after a deploy. URLs may change at any time — nothing is cached longer.
 
 ## Build & deploy
