@@ -1,0 +1,30 @@
+# Cloudflare Pages custom headers.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# CORS is handled per-origin in functions/_middleware.ts (allowlist).
+/*
+  X-Content-Type-Options: nosniff
+
+# Assets: cache for a day. URLs can change any time, so nothing longer.
+/f/*
+  Cache-Control: public, max-age=86400
+/glb/*
+  Cache-Control: public, max-age=86400
+/img/*
+  Cache-Control: public, max-age=86400
+/sfx/*
+  Cache-Control: public, max-age=86400
+
+# File list for the browser: short cache so it refreshes soon after a deploy.
+/manifest.json
+  Cache-Control: public, max-age=300
+
+# Show the licence inline in the browser instead of downloading it.
+/LICENCE.md
+  Content-Type: text/plain; charset=utf-8
+
+# .well-known — set correct content types (some files have no extension).
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+/.well-known/ssh.txt
+  Content-Type: text/plain; charset=utf-8
